@@ -1,0 +1,18 @@
+a = imread('cat.jpg');
+gray_scaleImage= rgb2gray(a);
+new = imresize(a,[512,512]);
+subplot(2,2,1);
+imshow(new);
+title('original image');
+b = imresize(new,.5);
+subplot(2,2,2);
+imshow(b);
+title('256x256 image');
+c = imresize(b,.5);
+subplot(2,2,3);
+imshow(c);
+title('128x128 image');
+d = imresize(c,.5);
+subplot(2,2,4);
+imshow(d);
+title('64x64 image');
