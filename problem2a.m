@@ -20,9 +20,11 @@ for i=1:m
         end
     end
 end
+tem_image = ImgB - min(ImgB(:));
+output_img = double(tem_image)./double(max(tem_image(:)));
 subplot(2,1,1);
 imshow(Img);
 title('Orginal')
 subplot(2,1,2);
-imshow(ImgB);
+imshow(output_img);
 title('Bright');
