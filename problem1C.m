@@ -1,30 +1,30 @@
-clear all;
+clear;
 clc;
-img = imread('dog.jpg');
+img = imread('cat.jpg');
+img = imresize(img, [512 512]);
 img = rgb2gray(img);
-t = 150;
+Img = img;
 [m,n] = size(img);
-Img = zeros(m,n);
-for  i= 1: m
-    for j = 1: n
-        if img(i,j)<=t
-            Img(i,j) =0;
+T = input('enter threshold value:\n');
+for i =1 :m
+    for j = 1:n
+        if(img(i,j)>T)
+            img(i,j) = 255;
         else
-         Img(i,j)=255;
+            img(i,j) = 0;
         end
     end
 end
 
 subplot(2,2,1);
-imshow(img);
-title('originalImage');
-subplot(2,2,2);
-histogram(img);
-title('histogram of  image');
-subplot(2,2,3);
 imshow(Img);
-title('processed');
-subplot(2,2,4);
+title('original image');
+subplot(2,2,2);
 histogram(Img);
-title('histogram of  threshold image');
-    
+title('original image histogram');
+subplot(2,2,3);
+imshow(img);
+title('threshold image');
+subplot(2,2,4);
+histogram(img);
+title('threshold image histogram');
