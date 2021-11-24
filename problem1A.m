@@ -1,18 +1,15 @@
 a = imread('cat.jpg');
-gray_scaleImage= rgb2gray(a);
-new = imresize(a,[512,512]);
-subplot(2,2,1);
-imshow(new);
-title('original image');
-b = imresize(new,.5);
-subplot(2,2,2);
-imshow(b);
-title('256x256 image');
-c = imresize(b,.5);
-subplot(2,2,3);
-imshow(c);
-title('128x128 image');
-d = imresize(c,.5);
-subplot(2,2,4);
-imshow(d);
-title('64x64 image');
+a = rgb2gray(a);
+a = imresize(a, [512,512]);
+[m,n] = size(a);
+
+k = input('enter decresing times\n:');
+xy = ceil(sqrt(k));
+for i = 1:k
+    subplot(xy,xy,i);
+    a = imresize(a,.5);
+    imshow(a);
+    title(strcat(int2str(m),'X',int2str(n)));
+    m = m/2;
+    n= n/2;
+end
