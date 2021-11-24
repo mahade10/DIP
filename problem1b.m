@@ -1,16 +1,15 @@
 clear;
-Img = imread('cat.jpg');
-%[m, n] = size(Img);
-Img = imresize(Img,[512 512]);
-
-b = [ 1 2 3 4 5 6 7 8];
-
-figure
-for t = 1: length(b)
-    d = 2^(t);
-    img = round(Img/d);
-    subplot(2, 4, t);
-   
-    imshow(img*d);
-     title(['bit ', num2str(abs(t-9))]);
+clc;
+img = imread('cat.jpg');
+img = imresize(img, [512 512]);
+img = rgb2gray(img);
+[m,n] = size(img);
+b = 8;
+xy = ceil(sqrt(b));
+for  i = 1: b
+    d = 2^i;
+    Img = img/d;
+    subplot(xy,xy,i);
+    imshow(Img*d);
+    title(['bit level', int2str(9-i)]);
 end
